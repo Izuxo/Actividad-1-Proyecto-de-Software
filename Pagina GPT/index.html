@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Herbario de plantas de interior y exterior.">
+    <title>Verde Cerca | Guía de plantas</title>
+    <link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+    <header class="hero" id="inicio">
+        <nav class="barra-navegacion" aria-label="Navegación principal">
+            <a class="marca" href="#inicio"><span class="marca-icono">✦</span> Verde Cerca</a>
+            <div class="enlaces-nav">
+                <a href="#plantas">Plantas</a>
+                <a href="#mantenedor">Quién mantiene el sitio</a>
+                <a class="boton-nav" href="#contacto">Contacto</a>
+            </div>
+        </nav>
+        <div class="hero-contenido">
+            <p class="etiqueta">Guía botánica doméstica</p>
+            <h1>Un poco de verde cambia el aire de un espacio.</h1>
+            <p class="hero-texto">Explorá una selección de plantas resistentes y elegí la compañera ideal para tu casa, balcón o jardín.</p>
+            <a class="boton-principal" href="#plantas">Explorar plantas <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-nota"><span>01</span> Interior &nbsp; / &nbsp; Exterior</div>
+    </header>
+
+    <main>
+        <section class="catalogo" id="plantas">
+            <div class="encabezado-seccion">
+                <div>
+                    <p class="eyebrow">Colección seleccionada</p>
+                    <h2>Encontrá tu planta</h2>
+                </div>
+                <details class="selector-categorias">
+                    <summary>Elegir categoría <span aria-hidden="true">⌄</span></summary>
+                    <div class="opciones-categoria">
+                        <a href="#interior">Plantas de interior <span>→</span></a>
+                        <a href="#exterior">Plantas de exterior <span>→</span></a>
+                    </div>
+                </details>
+            </div>
+
+            <div class="categoria" id="interior">
+                <div class="titulo-categoria">
+                    <span class="numero-categoria">01</span>
+                    <div>
+                        <p class="eyebrow">Luz amable · espacios interiores</p>
+                        <h3>Plantas de interior</h3>
+                    </div>
+                </div>
+                <div class="rejilla-plantas">
+                    <article class="tarjeta-planta">
+                        <div class="imagen-planta"><img src="Imágenes/monstera.svg" alt="Monstera deliciosa de hojas grandes"></div>
+                        <div class="datos-planta"><p class="nombre-cientifico">Monstera deliciosa</p><h4>Costilla de Adán</h4><p>Hojas escultóricas y una presencia tropical para rincones luminosos.</p><a class="enlace-pdf" href="info/monstera.pdf" download>Descargar ficha PDF <span>↗</span></a></div>
+                    </article>
+                    <article class="tarjeta-planta">
+                        <div class="imagen-planta"><img src="Imágenes/sansevieria.svg" alt="Sansevieria de hojas verdes verticales"></div>
+                        <div class="datos-planta"><p class="nombre-cientifico">Dracaena trifasciata</p><h4>Sansevieria</h4><p>Una aliada noble, vertical y tolerante para ambientes con poca luz.</p><a class="enlace-pdf" href="info/sansevieria.pdf" download>Descargar ficha PDF <span>↗</span></a></div>
+                    </article>
+                    <article class="tarjeta-planta">
+                        <div class="imagen-planta"><img src="Imágenes/calathea.svg" alt="Calathea con hojas decorativas"></div>
+                        <div class="datos-planta"><p class="nombre-cientifico">Calathea orbifolia</p><h4>Calathea</h4><p>Rayas suaves y movimiento: una planta para observar de cerca.</p><a class="enlace-pdf" href="info/calathea.pdf" download>Descargar ficha PDF <span>↗</span></a></div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="categoria" id="exterior">
+                <div class="titulo-categoria">
+                    <span class="numero-categoria">02</span>
+                    <div>
+                        <p class="eyebrow">Sol abierto · patios y balcones</p>
+                        <h3>Plantas de exterior</h3>
+                    </div>
+                </div>
+                <div class="rejilla-plantas">
+                    <article class="tarjeta-planta">
+                        <div class="imagen-planta"><img src="Imágenes/lavanda.svg" alt="Lavanda florecida en tonos violetas"></div>
+                        <div class="datos-planta"><p class="nombre-cientifico">Lavandula angustifolia</p><h4>Lavanda</h4><p>Aromática, resistente y perfecta para sumar perfume al jardín.</p><a class="enlace-pdf" href="info/lavanda.pdf" download>Descargar ficha PDF <span>↗</span></a></div>
+                    </article>
+                    <article class="tarjeta-planta">
+                        <div class="imagen-planta"><img src="Imágenes/romero.svg" alt="Planta de romero con hojas finas"></div>
+                        <div class="datos-planta"><p class="nombre-cientifico">Salvia rosmarinus</p><h4>Romero</h4><p>Un clásico culinario que disfruta del sol y de un suelo bien drenado.</p><a class="enlace-pdf" href="info/romero.pdf" download>Descargar ficha PDF <span>↗</span></a></div>
+                    </article>
+                    <article class="tarjeta-planta">
+                        <div class="imagen-planta"><img src="Imágenes/geranio.svg" alt="Geranio con flores rojas"></div>
+                        <div class="datos-planta"><p class="nombre-cientifico">Pelargonium hortorum</p><h4>Geranio</h4><p>Flores intensas y color duradero para ventanas y espacios exteriores.</p><a class="enlace-pdf" href="info/geranio.pdf" download>Descargar ficha PDF <span>↗</span></a></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-info" id="mantenedor">
+            <div class="numero-categoria">03</div>
+            <div><p class="eyebrow">Detrás del herbario</p><h2>Un sitio hecho con curiosidad.</h2><p>Verde Cerca es mantenido por <strong>Nahuel Buzzi, estudiante de informática</strong>, como una guía simple para aprender, cuidar y disfrutar más de las plantas que nos rodean.</p></div>
+        </section>
+
+        <section class="contacto" id="contacto">
+            <div><p class="eyebrow">¿Tenés una consulta?</p><h2>Hablemos de plantas.</h2><p>Completá el formulario y dejá tu mensaje. Este formulario está preparado para enviar una consulta por correo.</p></div>
+            <form action="mailto:nahuel.buzzi@example.com" method="post" enctype="text/plain">
+                <label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+                <label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" placeholder="tu-correo@ejemplo.com" required>
+                <label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Qué planta querés conocer?" required></textarea>
+                <button class="boton-principal boton-formulario" type="submit">Enviar consulta <span aria-hidden="true">↗</span></button>
+            </form>
+        </section>
+    </main>
+
+    <footer><a class="marca" href="#inicio"><span class="marca-icono">✦</span> Verde Cerca</a><p>Una guía estática para cultivar curiosidad.</p><p>© 2026 Nahuel Buzzi</p></footer>
+</body>
+</html>

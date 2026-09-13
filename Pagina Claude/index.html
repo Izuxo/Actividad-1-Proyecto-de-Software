@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Plantas - Naturaleza en Casa</title>
+    <link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">🌿 Galería de Plantas</div>
+            <ul class="nav-menu">
+                <li><a href="#plantas" class="nav-link">Plantas</a></li>
+                <li><a href="#acerca" class="nav-link">Acerca de</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Principal -->
+    <div class="container">
+        <!-- Sección de Plantas -->
+        <section id="plantas" class="section">
+            <h1>Nuestras Plantas</h1>
+            <p class="section-description">Selecciona una categoría para ver nuestras hermosas plantas</p>
+            
+            <div class="categoria-selector">
+                <label for="categoria">Elige una categoría:</label>
+                <select id="categoria" class="select-categoria">
+                    <option value="">-- Seleccionar categoría --</option>
+                    <option value="interior">🏠 Plantas de Interior</option>
+                    <option value="exterior">🌳 Plantas de Exterior</option>
+                </select>
+            </div>
+
+            <div id="plantas-container" class="plantas-grid">
+                <!-- Las plantas se mostrarán aquí según la categoría seleccionada -->
+            </div>
+        </section>
+
+        <!-- Sección Acerca de -->
+        <section id="acerca" class="section section-light">
+            <h2>Acerca de Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Este sitio web fue creado para compartir información sobre plantas y fomentar el interés por la jardinería y la naturaleza.</p>
+                    <h3>Desarrollador</h3>
+                    <p><strong>Nahuel Buzzi</strong></p>
+                    <p>Estudiante de Informática</p>
+                    <p>Apasionado por el desarrollo web y la tecnología verde.</p>
+                </div>
+                <div class="about-icon">🌱</div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="section">
+            <h2>Formulario de Contacto</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="asunto">Asunto:</label>
+                    <input type="text" id="asunto" name="asunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Galería de Plantas. Creado por Nahuel Buzzi - Estudiante de Informática</p>
+    </footer>
+
+    <!-- Script para manejar las plantas (sin dependencias externas) -->
+    <script>
+        // Datos de plantas
+        const plantas = {
+            interior: [
+                {
+                    nombre: "Pothos",
+                    descripcion: "Planta trepadora muy resistente y fácil de cuidar",
+                    imagen: "pothos",
+                    pdf: "pothos"
+                },
+                {
+                    nombre: "Monstera Deliciosa",
+                    descripcion: "Planta con hojas grandes y decorativas",
+                    imagen: "monstera",
+                    pdf: "monstera"
+                },
+                {
+                    nombre: "Palmera de Parlor",
+                    descripcion: "Elegante planta tropical para interiores",
+                    imagen: "palmera",
+                    pdf: "palmera"
+                }
+            ],
+            exterior: [
+                {
+                    nombre: "Rosal",
+                    descripcion: "Flores hermosas y fragrantes",
+                    imagen: "rosal",
+                    pdf: "rosal"
+                },
+                {
+                    nombre: "Girasol",
+                    descripcion: "Planta vibrante que sigue el sol",
+                    imagen: "girasol",
+                    pdf: "girasol"
+                },
+                {
+                    nombre: "Limonero",
+                    descripcion: "Árbol frutal pequeño y productivo",
+                    imagen: "limonero",
+                    pdf: "limonero"
+                }
+            ]
+        };
+
+        // Elemento select
+        const categoriaSelect = document.getElementById('categoria');
+        const plantasContainer = document.getElementById('plantas-container');
+
+        // Función para obtener SVG de planta
+        function obtenerSVGPlanta(tipo) {
+            const svgs = {
+                pothos: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#f5f5f5"/>
+                    <ellipse cx="100" cy="150" rx="40" ry="30" fill="#8b7355"/>
+                    <path d="M 100 150 Q 80 120 85 80 Q 90 60 100 50" stroke="#2d5016" stroke-width="3" fill="none"/>
+                    <path d="M 100 150 Q 120 120 115 80 Q 110 60 100 50" stroke="#2d5016" stroke-width="3" fill="none"/>
+                    <ellipse cx="70" cy="80" rx="15" ry="20" fill="#52b788" transform="rotate(-30 70 80)"/>
+                    <ellipse cx="130" cy="80" rx="15" ry="20" fill="#52b788" transform="rotate(30 130 80)"/>
+                    <ellipse cx="80" cy="100" rx="12" ry="18" fill="#2d6a4f" transform="rotate(-25 80 100)"/>
+                    <ellipse cx="120" cy="100" rx="12" ry="18" fill="#2d6a4f" transform="rotate(25 120 100)"/>
+                </svg>`,
+                monstera: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#f5f5f5"/>
+                    <ellipse cx="100" cy="160" rx="35" ry="25" fill="#8b7355"/>
+                    <path d="M 100 160 L 100 80" stroke="#4a3728" stroke-width="2" fill="none"/>
+                    <path d="M 60 90 Q 40 100 35 120 L 60 110 Z" fill="#1b4332"/>
+                    <path d="M 60 90 Q 50 95 52 70 L 65 85 Z" fill="#2d6a4f"/>
+                    <path d="M 140 90 Q 160 100 165 120 L 140 110 Z" fill="#1b4332"/>
+                    <path d="M 140 90 Q 150 95 148 70 L 135 85 Z" fill="#2d6a4f"/>
+                    <circle cx="70" cy="95" r="8" fill="#52b788" opacity="0.6"/>
+                    <circle cx="130" cy="95" r="8" fill="#52b788" opacity="0.6"/>
+                </svg>`,
+                palmera: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#f5f5f5"/>
+                    <ellipse cx="100" cy="160" rx="30" ry="20" fill="#8b7355"/>
+                    <rect x="95" y="80" width="10" height="80" fill="#654321"/>
+                    <path d="M 100 80 L 70 40 L 75 60 Z" fill="#2d5016"/>
+                    <path d="M 100 80 L 130 40 L 125 60 Z" fill="#2d5016"/>
+                    <path d="M 100 85 L 60 50 L 70 75 Z" fill="#52b788"/>
+                    <path d="M 100 85 L 140 50 L 130 75 Z" fill="#52b788"/>
+                    <path d="M 100 95 L 65 70 L 75 90 Z" fill="#1b4332"/>
+                    <path d="M 100 95 L 135 70 L 125 90 Z" fill="#1b4332"/>
+                </svg>`,
+                rosal: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#f5f5f5"/>
+                    <ellipse cx="100" cy="160" rx="35" ry="25" fill="#8b7355"/>
+                    <path d="M 100 160 L 100 80" stroke="#2d5016" stroke-width="3" fill="none"/>
+                    <circle cx="100" cy="50" r="25" fill="#c1121f"/>
+                    <circle cx="85" cy="60" r="18" fill="#e60012"/>
+                    <circle cx="115" cy="60" r="18" fill="#e60012"/>
+                    <circle cx="90" cy="45" r="15" fill="#ffc300"/>
+                    <circle cx="110" cy="45" r="15" fill="#ffc300"/>
+                    <ellipse cx="80" cy="100" rx="8" ry="15" fill="#2d5016" transform="rotate(-30 80 100)"/>
+                    <ellipse cx="120" cy="100" rx="8" ry="15" fill="#2d5016" transform="rotate(30 120 100)"/>
+                </svg>`,
+                girasol: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#f5f5f5"/>
+                    <ellipse cx="100" cy="170" rx="40" ry="20" fill="#8b7355"/>
+                    <path d="M 100 170 L 100 90" stroke="#2d5016" stroke-width="4" fill="none"/>
+                    <circle cx="100" cy="70" r="35" fill="#ffd700"/>
+                    <circle cx="100" cy="70" r="25" fill="#ffed4e"/>
+                    <circle cx="100" cy="70" r="12" fill="#8b6914"/>
+                    <path d="M 85 110 Q 75 120 70 135" stroke="#52b788" stroke-width="3" fill="none"/>
+                    <path d="M 115 110 Q 125 120 130 135" stroke="#52b788" stroke-width="3" fill="none"/>
+                    <ellipse cx="65" cy="140" rx="8" ry="12" fill="#2d5016"/>
+                    <ellipse cx="135" cy="140" rx="8" ry="12" fill="#2d5016"/>
+                </svg>`,
+                limonero: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#f5f5f5"/>
+                    <ellipse cx="100" cy="170" rx="45" ry="20" fill="#8b7355"/>
+                    <path d="M 100 170 L 100 120" stroke="#654321" stroke-width="5" fill="none"/>
+                    <circle cx="100" cy="80" r="45" fill="#2d5016"/>
+                    <circle cx="85" cy="70" r="12" fill="#ffd700"/>
+                    <circle cx="115" cy="70" r="12" fill="#ffd700"/>
+                    <circle cx="90" cy="95" r="10" fill="#ffd700"/>
+                    <circle cx="110" cy="95" r="10" fill="#ffd700"/>
+                    <circle cx="100" cy="110" r="8" fill="#ffd700"/>
+                    <ellipse cx="75" cy="100" rx="7" ry="12" fill="#52b788" transform="rotate(-40 75 100)"/>
+                    <ellipse cx="125" cy="100" rx="7" ry="12" fill="#52b788" transform="rotate(40 125 100)"/>
+                </svg>`
+            };
+            return svgs[tipo] || svgs.pothos;
+        }
+
+        // Función para mostrar plantas
+        function mostrarPlantas(categoria) {
+            plantasContainer.innerHTML = '';
+            
+            if (!categoria) {
+                plantasContainer.innerHTML = '<p class="no-selection">Selecciona una categoría para ver las plantas</p>';
+                return;
+            }
+
+            const plantasSeleccionadas = plantas[categoria];
+            
+            plantasSeleccionadas.forEach(planta => {
+                const plantaDiv = document.createElement('div');
+                plantaDiv.className = 'planta-card';
+                
+                plantaDiv.innerHTML = `
+                    <div class="planta-imagen">
+                        <img src="Imágenes/${planta.imagen}.png" alt="${planta.nombre}" class="planta-img">
+                    </div>
+                    <div class="planta-info">
+                        <h3>${planta.nombre}</h3>
+                        <p>${planta.descripcion}</p>
+                        <div class="planta-categoria">
+                            ${categoria === 'interior' ? '🏠 Interior' : '🌳 Exterior'}
+                        </div>
+                        <a href="info/${planta.pdf}.pdf" class="btn-descargar" download>
+                            📥 Descargar PDF
+                        </a>
+                    </div>
+                `;
+                
+                plantasContainer.appendChild(plantaDiv);
+            });
+        }
+
+        // Event listener para el select
+        categoriaSelect.addEventListener('change', function() {
+            mostrarPlantas(this.value);
+        });
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            mostrarPlantas('');
+        });
+
+        // Manejo del formulario
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
